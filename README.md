@@ -23,11 +23,16 @@ User                     Risk-free interest rate Microservice           Fiscal D
   |                                        |                                   |
   |----------RequestRiskFreeRate-------->  |                                   |
   |                                        |----------RetrieveData(date)------>|
-  |                                        |<---ReturnData(t-bond avg rate)----|
+  |                                        |<---ReturnData(avg rate object)----|
   |<--ReturnRiskFreeRate(rate)------------ |                                   |
   |                                        |                                   |
 
 ```
+
+1. User sends a GET request to /risk-free-interest-rate
+2. Microservice gets today's date and uses that to get the last month and current year
+3. Microservice calls fiscal data API to get avg interest rates data with the last month and current year as the filter value
+4. Microservice returns treasury bond's average interest rate as JSON object
 
 
 
